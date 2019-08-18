@@ -2,15 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
-
+import AlertBox from '@department-of-veterans-affairs/formation-react/AlertBox';
 import ErrorableCheckbox from '@department-of-veterans-affairs/formation-react/ErrorableCheckbox';
-
 import { FIELD_NAMES } from '../constants';
-
 import { selectVet360Field } from '../selectors';
 
 class ReceiveTextMessages extends React.Component {  
+  
+  isSuccessAlertVisible = () => {
+    // TODO: Put logic here to control success alert box.
+    return true;
+  }
+  
   render() {
+    // TODO: Do not show this if user is not enrolled in health care also.
     if (!this.props.isTextable) return <div />;
     return (
       <div className="receive-text-messages">
@@ -20,6 +25,11 @@ class ReceiveTextMessages extends React.Component {
             checked={this.props.checked}
             label={<span>Receive text messages (SMS) for VA health care appointment reminders.</span>}
           />
+        <AlertBox
+          isVisible={this.isSuccessAlertVisible()}
+          content={<p>Your preference has been saved.</p>}
+          status="success"
+          backgroundOnly />
         </div>
       </div>
     );

@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import AlertBox from '@department-of-veterans-affairs/formation-react/AlertBox';
 import ReceiveTextMessages from 'vet360/containers/ReceiveTextMessages';
-
 import PhoneField from './PhoneField';
-
 import { FIELD_NAMES } from '../constants';
-
-import {
-  selectVet360Field,
-} from '../selectors';
+import { selectVet360Field } from '../selectors';
 
 function MobilePhone({shouldDisplayReceiveTextMessages, isEnrolledInHealthcare}) {
   return (
